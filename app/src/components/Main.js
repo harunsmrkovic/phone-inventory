@@ -9,7 +9,7 @@ class AppComponent extends React.Component {
   render() {
     return (
       <div>
-        <AddColor />
+        <AddColor actions={this.props.actions} />
         <Color source="http://localhost:3030/colors" boje="plava, crna" />
       </div>
     );
