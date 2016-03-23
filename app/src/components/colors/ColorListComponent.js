@@ -7,8 +7,10 @@ import ListItem from './ListItemComponent'
 require('styles/colors/ColorList.sass');
 
 class ColorListComponent extends React.Component {
+  renderListItem = (color) => <ListItem color={color.name} key={color._id} />
+
   render() {
-    let listItems = this.props.colors.map(color => { return <ListItem color={color.name} key={color._id} /> });
+    let listItems = this.props.colors.map(this.renderListItem);
 
     return (
       <div>{listItems}</div>

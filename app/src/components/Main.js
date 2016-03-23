@@ -3,11 +3,15 @@ require('styles/App.css');
 
 import React from 'react';
 import Color from './colors/ColorComponent'
+import AddColor from './colors/AddColorComponent'
 
 class AppComponent extends React.Component {
   render() {
     return (
-      <Color source="http://localhost:3030/colors" boje="plava, crna" />
+      <div>
+        <AddColor />
+        <Color source="http://localhost:3030/colors" boje="plava, crna" />
+      </div>
     );
   }
 }

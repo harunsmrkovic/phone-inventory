@@ -7,7 +7,9 @@ require('styles/colors/ListItem.sass');
 class ListItemComponent extends React.Component {
   render() {
     return (
-      <div>Boja je {this.props.color}</div>
+      <li>
+        <strong>{this.props.color}</strong>
+      </li>
     );
   }
 }
