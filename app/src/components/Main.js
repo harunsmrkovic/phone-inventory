@@ -7,6 +7,7 @@ import AddColor from './colors/AddColorComponent'
 
 class AppComponent extends React.Component {
   render() {
+    console.info('props', this.props);
     return (
       <div>
         <AddColor actions={this.props.actions} />
