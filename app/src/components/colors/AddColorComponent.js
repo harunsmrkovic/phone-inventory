@@ -7,10 +7,13 @@ require('styles/colors/AddColor.sass');
 
 class AddColorComponent extends React.Component {
   render() {
+    console.log('calling add component render');
     return (
       <form onSubmit={e => {
         e.preventDefault();
-        this.props.actions.addColor(this.input.value);
+        setTimeout(() => {
+          this.props.actions.addColor(this.input.value, 1);
+        }, 1000);
       }}>
         <input ref={node => { this.input = node }} />
       </form>

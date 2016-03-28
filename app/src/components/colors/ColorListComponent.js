@@ -10,10 +10,13 @@ class ColorListComponent extends React.Component {
   renderListItem = (color) => <ListItem color={color.name} key={color._id} />
 
   render() {
+    console.log('calling colorlist component render');
     let listItems = this.props.colors.map(this.renderListItem);
 
     return (
-      <div>{listItems}</div>
+      <div>
+        API: {listItems}
+      </div>
     );
   }
 }

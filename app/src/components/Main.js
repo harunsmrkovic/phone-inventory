@@ -7,11 +7,11 @@ import AddColor from './colors/AddColorComponent'
 
 class AppComponent extends React.Component {
   render() {
-    console.info('props', this.props);
+    console.info('props @ Main', this.props);
     return (
       <div>
         <AddColor actions={this.props.actions} />
-        <Color source="http://localhost:3030/colors" boje="plava, crna" />
+        <Color source="http://localhost:3030/colors" colors={this.props.colors} actions={this.props.actions} />
       </div>
     );
   }

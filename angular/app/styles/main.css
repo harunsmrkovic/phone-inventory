@@ -12,3 +12,22 @@ body {
 a {
   cursor: pointer;
 }
+
+ul, li {
+  padding: 0;
+  margin: 0;
+}
+
+.label {
+  font-size: 14px;
+
+}
+
+.label a {
+  color: #fff;
+  margin-left: 10px;
+}
+
+.label a:hover {
+  opacity: 0.8;
+}

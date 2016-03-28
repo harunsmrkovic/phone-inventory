@@ -1,3 +1,7 @@
-module.exports = function(colorName) {
-  return { type: 'ADD_COLOR', colorName };
+module.exports = function(colorName, id) {
+  return {
+    type: 'ADD_COLOR',
+    _id: id,
+    colorName
+  };
 };

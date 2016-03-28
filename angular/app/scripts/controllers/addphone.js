@@ -14,8 +14,8 @@ angular.module('angularApp')
     $scope.addPhone = function(){
       $log.info($scope.newPhone);
       Phone.add($scope.newPhone)
-        .then(function(){
-          $scope.phones.push($scope.newPhone);
+        .then(function(createdPhone){
+          $scope.phones.push(createdPhone.data);
         })
         .finally(function(){
           $scope.newPhone = '';

@@ -28,4 +28,16 @@ angular.module('angularApp')
         phone.newInventory = {};
       });
     };
+
+    $scope.changeInstanceQuantity = function(phone, instance, modifier){
+      instance.quantity += modifier;
+      Phone.updateInstanceQuantity(phone._id, instance._id, instance.quantity);
+    };
+
+    $scope.removeInstance = function(phone, instance){
+      Phone.destroyInstance(phone._id, instance._id)
+      .then(function(){
+        phone.inventory.splice(phone.inventory.indexOf(instance), 1);
+      });
+    };
   });

@@ -1,49 +1,47 @@
-<div ng-controller="AddPhoneCtrl">
-  <form ng-submit="addPhone()">
-    <input type="text" class="form-control" ng-model="newPhone.name">
-    <button class="btn btn-primary" type="submit">Dodaj</button>
-  </form>
+<div ng-controller="AddPhoneCtrl" class="row">
+  <div class="col-md-6">
+    <form ng-submit="addPhone()" class="input-group">
+      <input type="text" class="form-control" ng-model="newPhone.name">
+      <span class="input-group-btn">
+        <button class="btn btn-primary" type="submit">Dodaj!</button>
+      </span>
+    </form>
+  </div>
 </div>
 
-<table class="table table-striped">
-  <thead>
-    <th>Naziv</th>
-    <th>Instance</th>
-  </thead>
-  <tbody>
-    <tr ng-repeat="phone in phones">
-      <td width="30%">{{phone.name}}</td>
-      <td width="70%">
-        <table>
-          <thead>
-            <th>Boja</th>
-            <th>Kolicina</th>
-          </thead>
-          <tbody>
-            <tr ng-repeat="instance in phone.inventory">
-              <td width="60%">{{instance.color}}</td>
-              <td width="40%">{{instance.quantity}}</td>
-            </tr>
-            <tr>
-              <td colspan="2">
-                <a ng-click="phone.addingInstance = !phone.addingInstance">Dodaj</a>
-                <form ng-submit="addInstance(phone)" class="row" ng-show="phone.addingInstance">
-                  <div class="col-md-6">
-                    <input type="text" class="form-control" ng-model="phone.newInventory.color" placeholder="Naziv instance" >
-                  </div>
-                  <div class="col-md-3">
-                    <input type="number" class="form-control" ng-model="phone.newInventory.quantity" placeholder="Inicijalna kolicina">
-                  </div>
-                  <div class="col-md-3">
-                    <button class="btn btn-primary" type="submit">Dodaj</button>
-                  </div>
-                </form>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <a ng-click="deletePhone(phone)" class="pull-right">Delete</a>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped">
+      <thead>
+        <th>Naziv</th>
+        <th>Instance</th>
+      </thead>
+      <tbody>
+        <tr ng-repeat="phone in phones">
+          <td width="50%">{{phone.name}}</td>
+          <td width="50%">
+            <ul>
+              <li ng-repeat="instance in phone.inventory">
+                <span class="label label-primary">{{instance.quantity}} <a ng-click="changeInstanceQuantity(phone, instance, 1)"><i class="fa fa-chevron-up"></i></a><a ng-click="changeInstanceQuantity(phone, instance, -1)"><i class="fa fa-chevron-down"></i></a></span>
+                {{instance.color}}
+                <a ng-click="removeInstance(phone, instance)"><i class="fa fa-minus-circle"></i></a></li>
+              <li><a ng-click="phone.addingInstance = !phone.addingInstance">Dodaj</a></li>
+            </ul>
+            <form ng-submit="addInstance(phone)" class="row" ng-show="phone.addingInstance">
+              <div class="col-md-6">
+                <input type="text" class="form-control" ng-model="phone.newInventory.color" placeholder="Naziv instance" >
+              </div>
+              <div class="col-md-3">
+                <input type="number" class="form-control" ng-model="phone.newInventory.quantity" placeholder="Inicijalna kolicina">
+              </div>
+              <div class="col-md-3">
+                <button class="btn btn-primary" type="submit">Dodaj <i class="fa fa-plus-circle"></i></button>
+              </div>
+            </form>
+            <a ng-click="deletePhone(phone)" class="pull-right"><i class="fa fa-trash"></i></a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

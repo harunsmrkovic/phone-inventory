@@ -25,7 +25,7 @@ class App extends Component {
  */
 App.propTypes = {
   actions: PropTypes.object.isRequired,
-  colors: PropTypes.object.isRequired
+  colors: PropTypes.array.isRequired
 };
 function mapStateToProps(state) {
   /* Populated by react-webpack-redux:reducer */

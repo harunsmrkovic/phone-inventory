@@ -40,5 +40,26 @@ angular.module('angularApp')
       });
     };
 
+    phone.updateInstanceQuantity = function(id, instanceId, quantity){
+      return phone.get(id).then(function(phoneData){
+        phoneData = phoneData.data;
+        phoneData.inventory = phoneData.inventory.map(function(i){
+          if(i._id === instanceId){
+            i.quantity = quantity;
+          }
+          return i;
+        });
+        return phone.update(id, phoneData);
+      });
+    };
+
+    phone.destroyInstance = function(id, instanceIdToRemove){
+      return phone.get(id).then(function(phoneData){
+        phoneData = phoneData.data;
+        phoneData.inventory = phoneData.inventory.filter(function(i){ return i._id !== instanceIdToRemove; });
+        return phone.update(id, phoneData);
+      });
+    };
+
     return phone;
   });

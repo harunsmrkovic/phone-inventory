@@ -10,23 +10,33 @@ require('styles/colors/Color.sass');
 class ColorComponent extends React.Component {
   constructor(props){
     super(props);
-    this.state = {
-      colors: []
-    };
+    this.naloadaj = this.naloadaj.bind(this)
   }
   componentDidMount = () => {
+    console.info('mounted, fetchign from', this.props.source);
     this.serverRequest = $.get(this.props.source, (result) => {
-      this.setState({
-        colors: result.data
+      result.data.forEach(color => {
+        // this.props.actions.addColor(color.name, color._id);
       });
     })
   }
   componentWillUnmount = () => {
     this.serverRequest.abort();
   }
+  naloadaj() {
+    $.get(this.props.source, (result) => {
+      result.data.forEach(color => {
+        this.props.actions.addColor(color.name, color._id);
+      });
+    })
+  }
   render(){
+    console.log('calling color component render');
     return (
-      <ColorList colors={this.state.colors} />
+      <div>
+        <a onClick={this.naloadaj}>klikni me</a>
+        <ColorList colors={this.props.colors} />
+      </div>
     );
   }
 }
