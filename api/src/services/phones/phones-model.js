@@ -14,9 +14,10 @@ mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost:27017/phones');
 
 const phonesSchema = new Schema(
+  // ``Z    <-- Asi's (my dog) contribution
   {
     name: { type: String, required: true },
-    colors: [{ name: String, quantity: Number }],
+    inventory: [{ color: String, quantity: Number }],
     createdAt: { type: Date, 'default': Date.now },
     updatedAt: { type: Date, 'default': Date.now }
   }
